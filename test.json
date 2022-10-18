@@ -1,0 +1,17 @@
+{
+  "proto": {
+      "latest": "?latest",
+      "date": "?date"
+  },
+  "$where": [
+    "?_np_iri npa:hasValidSignatureForPublicKey ?pubkey . ?latest npa:hasValidSignatureForPublicKey ?pubkey .  ?latest dct:created ?date ."
+  ],
+  "$orderby": [ "?date" ],
+  "grlc": "#+ summary: Returns the latest nanopublication.\n#+ method: GET\n#+ pagination: 1000\n#+ endpoint_in_url: False",
+  "$prefixes": {
+    "np" : "http://www.nanopub.org/nschema#",
+    "npa" : "http://purl.org/nanopub/admin/",
+    "npx" : "http://purl.org/nanopub/x/",
+    "dct" : "http://purl.org/dc/terms/"
+  }
+}

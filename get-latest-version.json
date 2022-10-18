@@ -1,6 +1,6 @@
 {
   "proto": {
-      "latest": "?latest",
+      "id": "?latest",
       "date": "?date"
   },
   "$where": [

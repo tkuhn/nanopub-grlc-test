@@ -8,7 +8,6 @@
   "$orderby": [ "?pubkey" ],
   "grlc": "#+ summary: Testing SPARQL Transformer in grlc\n#+ endpoint: http://dbpedia.org/sparql\n#+ tags:\n#+   - json\n#+ method: GET\n#+ pagination: 50",
   "$prefixes": {
-    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "np" : "http://www.nanopub.org/nschema#",
     "npa" : "http://purl.org/nanopub/admin/",
     "npx" : "http://purl.org/nanopub/x/",

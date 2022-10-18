@@ -29,7 +29,7 @@
     "    ?retraction np:hasAssertion ?ra .",
     "  }",
     "  graph ?ra {",
-    "    ?somebody npx:retracts ?latest .",",
+    "    ?somebody npx:retracts ?latest .",
     "  }",
     "}"
   ],

@@ -6,7 +6,7 @@
     "?__np_iri npa:hasValidSignatureForPublicKey ?pubkey"
   ],
   "$orderby": [ "?pubkey" ],
-  "grlc": "#+ summary: Returns the latest nanopublication.\n#+ method: GET\n#+ pagination: 1000\n#+ endpoint_in_url: False",
+  "grlc": "#+ summary: Testing SPARQL Transformer in grlc\n#+ endpoint: https://virtuoso.nps.petapico.org/sparql\n#+ tags:\n#+   - json\n#+ method: GET\n#+ pagination: 50",
   "$prefixes": {
     "np" : "http://www.nanopub.org/nschema#",
     "npa" : "http://purl.org/nanopub/admin/",

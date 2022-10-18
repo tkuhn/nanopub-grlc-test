@@ -3,7 +3,7 @@
       "pubkey": "?pubkey"
   },
   "$where": [
-    "?_np_iri npa:hasValidSignatureForPublicKey ?pubkey"
+    "?__np_iri npa:hasValidSignatureForPublicKey ?pubkey"
   ],
   "$orderby": [ "?date" ],
   "grlc": "#+ summary: Returns the latest nanopublication.\n#+ method: GET\n#+ pagination: 1000\n#+ endpoint_in_url: False",

@@ -5,7 +5,7 @@
   "$where": [
     "?__np_iri npa:hasValidSignatureForPublicKey ?pubkey"
   ],
-  "$orderby": [ "?date" ],
+  "$orderby": [ "?pubkey" ],
   "grlc": "#+ summary: Returns the latest nanopublication.\n#+ method: GET\n#+ pagination: 1000\n#+ endpoint_in_url: False",
   "$prefixes": {
     "np" : "http://www.nanopub.org/nschema#",

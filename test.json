@@ -1,6 +1,5 @@
 {
   "proto": {
-      "latest": "?latest",
       "pubkey": "?pubkey"
   },
   "$where": [

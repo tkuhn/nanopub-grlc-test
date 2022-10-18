@@ -1,16 +1,26 @@
 {
   "proto": {
-      "pubkey": "?pubkey"
+      "id": "?band",
+      "album": {
+        "id": "?album",
+        "date": "$dbo:releaseDate"
+      },
+      "member": {
+        "id": "$dbo:bandMember$required"
+      }
   },
   "$where": [
-    "?np npa:hasValidSignatureForPublicKey ?pubkey"
+    "?band rdf:type dbo:Band",
+    "?album rdf:type yago:Album106591815",
+    "?album dbo:artist ?band",
+    "?band dbo:genre ?__genre_iri"
   ],
-  "$orderby": [ "?pubkey" ],
-  "grlc": "#+ summary: Testing SPARQL Transformer in grlc\n#+ endpoint: https://virtuoso.nps.petapico.org/sparql\n#+ tags:\n#+   - json\n#+ method: GET\n#+ pagination: 50",
+  "$orderby": [ "?band", "?album" ],
+  "grlc": "#+ summary: Testing SPARQL Transformer in grlc\n#+ endpoint: http://dbpedia.org/sparql\n#+ tags:\n#+   - json\n#+ method: GET\n#+ pagination: 50",
   "$prefixes": {
-    "np" : "http://www.nanopub.org/nschema#",
-    "npa" : "http://purl.org/nanopub/admin/",
-    "npx" : "http://purl.org/nanopub/x/",
-    "dct" : "http://purl.org/dc/terms/"
+    "dbo" : "http://dbpedia.org/ontology/",
+    "dbr" : "http://dbpedia.org/resource/",
+    "yago" : "http://dbpedia.org/class/yago/",
+    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   }
 }

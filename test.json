@@ -3,7 +3,7 @@
       "pubkey": "?pubkey"
   },
   "$where": [
-    "?__np_iri npa:hasValidSignatureForPublicKey ?pubkey"
+    "?np npa:hasValidSignatureForPublicKey ?pubkey"
   ],
   "$orderby": [ "?pubkey" ],
   "grlc": "#+ summary: Testing SPARQL Transformer in grlc\n#+ endpoint: https://virtuoso.nps.petapico.org/sparql\n#+ tags:\n#+   - json\n#+ method: GET\n#+ pagination: 50",

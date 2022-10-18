@@ -4,41 +4,12 @@
       "date": "?date"
   },
   "$where": [
-    "graph npa:graph {",
-    "  ?_np_iri npa:hasValidSignatureForPublicKey ?pubkey .",
-    "  ?latest npa:hasValidSignatureForPublicKey ?pubkey .",
-    "  ?latest dct:created ?date .",
-    "}",
-      "graph npa:networkGraph {",
-    "  ?latest (npx:supersedes)* ?_np_iri .",
-    "}",
-    "filter not exists {",
-    "  graph npa:networkGraph {",
-    "    ?newer npx:supersedes ?latest .",
-    "  }",
-    "  graph npa:graph {",
-    "    ?newer npa:hasValidSignatureForPublicKey ?pubkey .",
-    "  }",
-    "}",
-    "filter not exists {",
-    "  graph npa:graph {",
-    "    ?retraction npa:hasHeadGraph ?rh .",
-    "    ?retraction npa:hasValidSignatureForPublicKey ?pubkey .",
-    "  }",
-    "  graph ?rh {",
-    "    ?retraction np:hasAssertion ?ra .",
-    "  }",
-    "  graph ?ra {",
-    "    ?somebody npx:retracts ?latest .",
-    "  }",
-    "}"
+    "graph npa:graph {\n  ?_np_iri npa:hasValidSignatureForPublicKey ?pubkey .\n  ?latest npa:hasValidSignatureForPublicKey ?pubkey .\n  ?latest dct:created ?date .\n}",
+      "graph npa:networkGraph {\n  ?latest (npx:supersedes)* ?_np_iri .\n}\nfilter not exists {\n  graph npa:networkGraph {\n    ?newer npx:supersedes ?latest .\n  }\n  graph npa:graph {\n    ?newer npa:hasValidSignatureForPublicKey ?pubkey .\n  }\n}\nfilter not exists {\n  graph npa:graph {\n    ?retraction npa:hasHeadGraph ?rh .\n    ?retraction npa:hasValidSignatureForPublicKey ?pubkey .\n  }\n  graph ?rh {\n    ?retraction np:hasAssertion ?ra .\n  }\n  graph ?ra {\n    ?somebody npx:retracts ?latest .\n  }\n}"
   ],
   "$orderby": [ "?date" ],
   "grlc": "#+ summary: Returns the latest nanopublication.\n#+ method: GET\n#+ pagination: 1000\n#+ endpoint_in_url: False",
   "$prefixes": {
-    "np" : "http://www.nanopub.org/nschema#",
-    "npa" : "http://purl.org/nanopub/admin/",
-    "npx" : "http://purl.org/nanopub/x/",
-    "dct" : "http://purl.org/dc/terms/"
+    "np" : "http://www.nanopub.org/nschema#\nnpa" : "http://purl.org/nanopub/admin/\nnpx" : "http://purl.org/nanopub/x/\ndct" : "http://purl.org/dc/terms/"
   }
 }

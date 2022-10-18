@@ -4,7 +4,9 @@
       "date": "?date"
   },
   "$where": [
-    "?_np_iri npa:hasValidSignatureForPublicKey ?pubkey . ?latest npa:hasValidSignatureForPublicKey ?pubkey .  ?latest dct:created ?date ."
+    "?_np_iri npa:hasValidSignatureForPublicKey ?pubkey",
+    "?latest npa:hasValidSignatureForPublicKey ?pubkey",
+    "?latest dct:created ?date"
   ],
   "$orderby": [ "?date" ],
   "grlc": "#+ summary: Returns the latest nanopublication.\n#+ method: GET\n#+ pagination: 1000\n#+ endpoint_in_url: False",

@@ -1,0 +1,40 @@
+<html>
+<head>
+<script>
+
+var get_latest = function(id, npUri) {
+  const apiUrl = 'http://grlc.nanopubs.lod.labs.vu.nl/api/local/local/get_latest_version?np=' + npUri;
+  var r = new XMLHttpRequest();
+  r.open('GET', apiUrl, true);
+  r.setRequestHeader('Accept', 'application/json');
+  r.responseType = 'json';
+  r.onload = function() {
+    var h = '';
+    if (r.status === 200) {
+      for (const b of r.response['results']['bindings']) {
+        l = b['latest']['value'];
+        h += '<code><a href="' + l + '">' + l + '</a></code>';
+      }
+    } else {
+      h = "<em>error: something went wrong with calling the API</en>";
+    }
+    document.getElementById(id).innerHTML = h;
+  };
+  r.send();
+};
+
+</script>
+
+</head>
+<body>
+
+<p>Latest version of <code><a href="http://purl.org/np/RALLkvoulW5DSScfQ2gDQzki9-8Tl-xV9MCmW7btOTHEM">http://purl.org/np/RALLkvoulW5DSScfQ2gDQzki9-8Tl-xV9MCmW7btOTHEM</a></code>:</p>
+
+<ul>
+<li><span id="latest"><em>retrieving latest version...</em></span></li>
+</ul>
+<script>
+get_latest("latest", 'http://purl.org/np/RALLkvoulW5DSScfQ2gDQzki9-8Tl-xV9MCmW7btOTHEM');
+</script>
+
+</body>

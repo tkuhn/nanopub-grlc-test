@@ -3,7 +3,7 @@
 <script>
 
 var get_latest = function(id, npUri) {
-  const apiUrl = 'http://grlc.nanopubs.lod.labs.vu.nl/api/local/local/get_latest_version?np=' + npUri;
+  const apiUrl = 'https://grlc.nps.petapico.org/api/local/local/get_latest_version?np=' + npUri;
   var r = new XMLHttpRequest();
   r.open('GET', apiUrl, true);
   r.setRequestHeader('Accept', 'application/json');
@@ -13,10 +13,10 @@ var get_latest = function(id, npUri) {
     if (r.status === 200) {
       for (const b of r.response['results']['bindings']) {
         l = b['latest']['value'];
-        h += '<code><a href="' + l + '">' + l + '</a></code>';
+        h += '<code><a href="' + l + '">' + l + '</a></code> ';
       }
     } else {
-      h = "<em>error: something went wrong with calling the API</en>";
+      h = "<em>error getting latest version</en>";
     }
     document.getElementById(id).innerHTML = h;
   };

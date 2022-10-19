@@ -21,7 +21,7 @@ var getJSON = function(url, callback) {
 getJSON('https://grlc.io/api-git/tkuhn/nanopub-grlc-test/get-newer-versions?np=http://purl.org/np/RALLkvoulW5DSScfQ2gDQzki9-8Tl-xV9MCmW7btOTHEM',
 function(error, response) {
     if (error == null) {
-      let template = {'<>':'li','html':'<code>${id}</code>'};
+      let template = {'<>':'li','html':'<code><a href="${id}">${id}</a></code>'};
       document.getElementById("list").innerHTML = json2html.render(response, template);
     } else {
       // error

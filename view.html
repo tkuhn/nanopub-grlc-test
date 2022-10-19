@@ -3,7 +3,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/json2html/2.1.0/json2html.min.js"></script>
 <script>
         
-var getJSON = function(url, callback) {
+var getJson = function(url, callback) {
   var request = new XMLHttpRequest();
   request.open('GET', url, true);
   request.responseType = 'json';
@@ -18,23 +18,32 @@ var getJSON = function(url, callback) {
   request.send();
 };
 
-getJSON('https://grlc.io/api-git/tkuhn/nanopub-grlc-test/get-newer-versions?np=http://purl.org/np/RALLkvoulW5DSScfQ2gDQzki9-8Tl-xV9MCmW7btOTHEM',
-function(error, response) {
-    if (error == null) {
-      let template = {'<>':'li','html':'<code><a href="${id}">${id}</a></code>'};
-      document.getElementById("list").innerHTML = json2html.render(response, template);
-    } else {
-      // error
+var populate = function(elementId, apiUrl, template) {
+  getJson(apiUrl,
+    function(error, response) {
+      if (error == null) {
+        document.getElementById(elementId).innerHTML = json2html.render(response, template);
+      } else {
+        document.getElementById(elementId).innerHTML = "<li><em>error: something went wrong with calling the API</en></li>";
+      }
     }
-  }
-);
+  );
+};
 
 </script>
 
 </head>
 <body>
-<p>Latest versions:</p>
+
+<p>Latest versions of <code><a href="http://purl.org/np/RALLkvoulW5DSScfQ2gDQzki9-8Tl-xV9MCmW7btOTHEM">http://purl.org/np/RALLkvoulW5DSScfQ2gDQzki9-8Tl-xV9MCmW7btOTHEM</a></code>:</p>
+
 <ul id="list">
-<li><em>loading...</em></li>
+<li><em>retrieving latest versions...</em></li>
 </ul>
+<script>
+populate("list",
+  'https://grlc.io/api-git/tkuhn/nanopub-grlc-test/get-newer-versions?np=http://purl.org/np/RALLkvoulW5DSScfQ2gDQzki9-8Tl-xV9MCmW7btOTHEM',
+  {'<>':'li','html':'<code><a href="${id}">${id}</a></code>'});
+</script>
+
 </body>

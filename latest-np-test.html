@@ -10,10 +10,17 @@ var get_latest = function(id, npUri) {
   r.responseType = 'json';
   r.onload = function() {
     var h = '';
-    if (r.status === 200) {
-      for (const b of r.response['results']['bindings']) {
-        l = b['latest']['value'];
-        h += '<code><a href="' + l + '">' + l + '</a></code> ';
+    if (r.status == 200) {
+      const bindings = r.response['results']['bindings'];
+      if (bindings.length == 1 && bindings[0]['latest']['value'] === npUri) {
+        h = 'this is the latest version';
+      } else if (bindings.length == 0) {
+        h = 'this nanopublication has been <strong>retracted</strong>'
+      } else {
+        for (const b of bindings) {
+          l = b['latest']['value'];
+          h += '<code><a href="' + l + '">' + l + '</a></code> ';
+        }
       }
     } else {
       h = "<em>error getting latest version</en>";
@@ -31,10 +38,19 @@ var get_latest = function(id, npUri) {
 <p>Latest version of <code><a href="http://purl.org/np/RALLkvoulW5DSScfQ2gDQzki9-8Tl-xV9MCmW7btOTHEM">http://purl.org/np/RALLkvoulW5DSScfQ2gDQzki9-8Tl-xV9MCmW7btOTHEM</a></code>:</p>
 
 <ul>
-<li><span id="latest"><em>retrieving latest version...</em></span></li>
+<li><span id="example1"><em>retrieving latest version...</em></span></li>
 </ul>
 <script>
-get_latest("latest", 'http://purl.org/np/RALLkvoulW5DSScfQ2gDQzki9-8Tl-xV9MCmW7btOTHEM');
+get_latest("example1", 'http://purl.org/np/RALLkvoulW5DSScfQ2gDQzki9-8Tl-xV9MCmW7btOTHEM');
+</script>
+
+<p>Latest version of <code><a href="http://purl.org/np/RARMBqX_-9lnhkaqk4BuxfLcC6H5cqTlzdtDzeDIwuKdU">http://purl.org/np/RALLkvoulW5DSScfQ2gDQzki9-8Tl-xV9MCmW7btOTHEM</a></code>:</p>
+
+<ul>
+<li><span id="example2"><em>retrieving latest version...</em></span></li>
+</ul>
+<script>
+get_latest("example2", 'http://purl.org/np/RARMBqX_-9lnhkaqk4BuxfLcC6H5cqTlzdtDzeDIwuKdU');
 </script>
 
 </body>
